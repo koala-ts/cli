@@ -1,0 +1,46 @@
+{
+  "name": "@koala-ts/cli",
+  "main": "dist/index.js",
+  "bin": {
+    "koala-ts": "dist/index.js"
+  },
+  "version": "0.1.0",
+  "description": "KoalaTs cli",
+  "homepage": "https://koala-ts.github.io/docs/",
+  "bugs": {
+    "url": "https://github.com/koala-ts/cli/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koala-ts/cli.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Dhemy",
+    "email": "imdhemy@gmail.com",
+    "url": "https://imdhemy.com"
+  },
+  "keywords": [
+    "koala",
+    "framework",
+    "nodejs",
+    "typescript",
+    "cli"
+  ],
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc && tsc-alias && chmod +x dist/index.js",
+    "test": "vitest run --coverage",
+    "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^2.1.8",
+    "tsc-alias": "^1.8.10",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8",
+    "@arethetypeswrong/cli": "^0.17.2"
+  }
+}
