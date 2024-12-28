@@ -3,7 +3,7 @@
 ## Usage
 
 ```bash
-npx @koalats/cli create my-app
+npx @koala-ts/cli create my-app
 ```
 
 ## License
