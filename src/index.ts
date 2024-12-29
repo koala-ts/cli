@@ -7,7 +7,7 @@ import * as process from 'node:process';
 import meta from '../package.json';
 import { IProgram } from './types';
 
-const program: IProgram = new Program();
+const program = new Program() as IProgram;
 
 program
     .name('KoalaTs CLI')
@@ -20,8 +20,10 @@ const commands = commandFiles.filter(file => file.endsWith('.command.js') || fil
 
 for (const command of commands) {
     const commandModule = await import(`./command/${command}`);
-    const commandFn = commandModule.default;
-    commandFn(program);
+    program
+        .command(commandModule.signature)
+        .description(commandModule.description)
+        .action(commandModule.action);
 }
 
 program.parse(process.argv);
