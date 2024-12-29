@@ -1,6 +1,6 @@
 {
   "name": "@koala-ts/cli",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "main": "dist/index.js",
   "bin": {
     "koala-ts": "dist/index.js"
