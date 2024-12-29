@@ -5,7 +5,6 @@ import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import * as process from 'node:process';
 import logger from './util/logger';
-import meta from '../package.json' assert { type: 'json' };
 import { IProgram } from './types';
 
 const program = new Program() as IProgram;
@@ -13,7 +12,7 @@ const program = new Program() as IProgram;
 program
     .name('KoalaTs CLI')
     .description('KoalaTs CLI is a command line interface for KoalaTs')
-    .version(meta.version);
+    .version('1.x');
 
 const rootDir = dirname(fileURLToPath(import.meta.url));
 const commandFiles: string[] = readdirSync(`${rootDir}/command`);
