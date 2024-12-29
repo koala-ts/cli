@@ -6,6 +6,7 @@ import { fileURLToPath } from 'url';
 import * as process from 'node:process';
 import meta from '../package.json';
 import { IProgram } from './types';
+import logger from './util/logger';
 
 const program = new Program() as IProgram;
 
@@ -26,4 +27,11 @@ for (const command of commands) {
         .action(commandModule.action);
 }
 
-program.parse(process.argv);
+try {
+    program.parse(process.argv);
+} catch (error) {
+    if (error instanceof Error) {
+        logger.error(error.message);
+    }
+    process.exit(1);
+}

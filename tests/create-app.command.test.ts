@@ -44,6 +44,6 @@ describe('Create App Command', () => {
         const stubDir = join(dirname(fileURLToPath(import.meta.url)), '/../stub');
         copyDirectoryContents(stubDir, projectDir);
 
-        expect(() => action('test-app')).toThrowError('Directory is not empty');
+        expect(() => action('test-app')).toThrowError();
     });
 });

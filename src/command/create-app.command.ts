@@ -16,13 +16,14 @@ export function action(name: string) {
 
     logger.info(`✨ Your app has been successfully created in: ./${name}`);
     logger.info(`📂 Navigate to the project directory: "cd ${name}"`);
-    logger.info(`📦 Install dependencies: "npm install"`);
-    logger.info(`🚀 Start the application: "npm start"`);
+
+    logger.warn(`📦 Install dependencies: "npm install"`);
+    logger.warn(`🚀 Start the application: "npm start"`);
 }
 
 export function createDir(dirPath: string): void {
     if (!isEmptyDir(dirPath)) {
-        throw new Error('Directory is not empty');
+        throw new Error('Directory "' + dirPath + '" is not empty');
     }
 
     mkdirSync(dirPath, { recursive: true });
