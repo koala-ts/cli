@@ -4,9 +4,9 @@ import { readdirSync } from 'fs';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import * as process from 'node:process';
-import meta from '../package.json';
-import { IProgram } from './types';
 import logger from './util/logger';
+import meta from '../package.json' assert { type: 'json' };
+import { IProgram } from './types';
 
 const program = new Program() as IProgram;
 
