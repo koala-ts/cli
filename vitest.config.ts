@@ -5,9 +5,11 @@ export default defineConfig({
         coverage: {
             exclude: [
                 ...configDefaults.exclude,
+                'src/index.ts',
                 '**/playground/**',
                 '**/tests/**',
                 '**/types.ts',
+                '**/stub/**',
             ],
         },
     },
