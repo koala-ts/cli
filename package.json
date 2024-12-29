@@ -32,7 +32,8 @@
   ],
   "type": "module",
   "files": [
-    "dist"
+    "dist",
+    "stub"
   ],
   "scripts": {
     "build": "tsc && tsc-alias && chmod +x dist/index.js",

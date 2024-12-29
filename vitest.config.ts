@@ -8,6 +8,7 @@ export default defineConfig({
                 '**/playground/**',
                 '**/tests/**',
                 '**/types.ts',
+                '**/stub/**',
             ],
         },
     },
