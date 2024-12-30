@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, test } from 'vitest';
 import { action, copyDirectoryContents, createDir, description, signature } from '../src/command/create-app.command';
-import { readdirSync, rmdirSync, unlinkSync } from 'node:fs';
+import { lstatSync, readdirSync, rmdirSync, unlinkSync } from 'node:fs';
 import { existsSync } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
@@ -9,7 +9,9 @@ function removeDirectory(dirPath: string) {
     if (existsSync(dirPath)) {
         readdirSync(dirPath).forEach((file) => {
             const currentPath = join(dirPath, file);
-            if (existsSync(currentPath)) {
+            if (lstatSync(currentPath).isDirectory()) {
+                removeDirectory(currentPath);
+            } else {
                 unlinkSync(currentPath);
             }
         });
