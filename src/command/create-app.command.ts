@@ -1,5 +1,5 @@
 import { dirname, join } from 'path';
-import { copyFileSync, existsSync, mkdirSync, readdirSync } from 'fs';
+import { copyFileSync, existsSync, lstatSync, mkdirSync, readdirSync } from 'fs';
 import { fileURLToPath } from 'url';
 import logger from '../util/logger';
 
@@ -39,10 +39,19 @@ function isEmptyDir(dirPath: string): boolean {
 }
 
 export function copyDirectoryContents(srcDir: string, destDir: string) {
+    if (!existsSync(destDir)) {
+        mkdirSync(destDir, { recursive: true });
+    }
+
     const files = readdirSync(srcDir);
     files.forEach(file => {
         const srcFile = join(srcDir, file);
         const destFile = join(destDir, file);
-        copyFileSync(srcFile, destFile);
+
+        if (lstatSync(srcFile).isDirectory()) {
+            copyDirectoryContents(srcFile, destFile);
+        } else {
+            copyFileSync(srcFile, destFile);
+        }
     });
 }
