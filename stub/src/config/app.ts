@@ -1,5 +1,5 @@
 import { HomeController } from '../controller/HomeController';
-import { type IKoalaConfig } from '@koala-ts/framework/dist/config/types';
+import { IKoalaConfig } from '@koala-ts/framework';
 
 export const appConfig: IKoalaConfig = {
     controllers: [
