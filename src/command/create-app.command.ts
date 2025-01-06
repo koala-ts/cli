@@ -1,5 +1,5 @@
 import { dirname, join } from 'path';
-import { copyFileSync, existsSync, lstatSync, mkdirSync, readdirSync } from 'fs';
+import { copyFileSync, existsSync, lstatSync, mkdirSync, readdirSync, writeFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import logger from '../util/logger';
 
@@ -13,6 +13,7 @@ export function action(name: string) {
 
     const stubDir = join(dirname(fileURLToPath(import.meta.url)), '/../../stub');
     copyDirectoryContents(stubDir, projectDir);
+    addGitIgnore(projectDir);
 
     logger.info(`✨ Your app has been successfully created in: ./${name}`);
     logger.info(`📂 Navigate to the project directory: "cd ${name}"`);
@@ -54,4 +55,14 @@ export function copyDirectoryContents(srcDir: string, destDir: string) {
             copyFileSync(srcFile, destFile);
         }
     });
+}
+
+function addGitIgnore(projectDir: string) {
+    const gitIgnorePath = join(projectDir, '.gitignore');
+    const gitIgnoreContent = `
+node_modules/
+coverage/
+dist/
+    `;
+    writeFileSync(gitIgnorePath, gitIgnoreContent);
 }
