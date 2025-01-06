@@ -36,7 +36,8 @@ describe('Create App Command', () => {
         action('test-app');
 
         expect(existsSync('test-app')).toBe(true);
-        expect(readdirSync('test-app')).toEqual(readdirSync('stub'));
+        const expectedFiles = ['.gitignore', ...readdirSync('stub')];
+        expect(readdirSync('test-app')).toEqual(expectedFiles);
     });
 
     test('it fails if directory is not empty', () => {
