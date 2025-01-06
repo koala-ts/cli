@@ -33,7 +33,8 @@
   "type": "module",
   "files": [
     "dist",
-    "stub"
+    "stub",
+    "stub/.gitignore"
   ],
   "scripts": {
     "build": "tsc && tsc-alias && chmod +x dist/index.js",
