@@ -59,10 +59,11 @@ export function copyDirectoryContents(srcDir: string, destDir: string) {
 
 function addGitIgnore(projectDir: string) {
     const gitIgnorePath = join(projectDir, '.gitignore');
-    const gitIgnoreContent = `
-node_modules/
+    const gitIgnoreContent = `node_modules/
 coverage/
 dist/
+/.env.local
+/.env.*.local
     `;
     writeFileSync(gitIgnorePath, gitIgnoreContent);
 }
