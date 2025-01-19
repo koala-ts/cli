@@ -1,3 +1,4 @@
+import './config/boot';
 import { create } from '@koala-ts/framework';
 import { appConfig, server } from './config';
 
