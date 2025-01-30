@@ -50,6 +50,7 @@
   },
   "dependencies": {
     "commander": "^12.1.0",
+    "simple-git": "^3.27.0",
     "yoctocolors": "^2.1.1"
   }
 }
