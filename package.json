@@ -1,6 +1,6 @@
 {
   "name": "@koala-ts/cli",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "main": "dist/index.js",
   "bin": {
     "koala-ts": "dist/index.js"
@@ -51,6 +51,7 @@
   "dependencies": {
     "commander": "^13.1.0",
     "simple-git": "^3.27.0",
+    "tar": "^7.4.3",
     "yoctocolors": "^2.1.1"
   }
 }
