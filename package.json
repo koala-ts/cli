@@ -43,10 +43,10 @@
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.17.2",
     "@types/node": "^22.10.2",
-    "@vitest/coverage-v8": "^2.1.8",
+    "@vitest/coverage-v8": "^3.1.1",
     "tsc-alias": "^1.8.10",
     "typescript": "^5.7.2",
-    "vitest": "^2.1.8"
+    "vitest": "^3.1.1"
   },
   "dependencies": {
     "commander": "^12.1.0",
