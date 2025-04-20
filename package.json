@@ -51,6 +51,7 @@
   "dependencies": {
     "commander": "^13.1.0",
     "simple-git": "^3.27.0",
+    "tar": "^7.4.3",
     "yoctocolors": "^2.1.1"
   }
 }
