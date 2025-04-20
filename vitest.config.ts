@@ -6,10 +6,8 @@ export default defineConfig({
             exclude: [
                 ...configDefaults.exclude,
                 'src/index.ts',
-                '**/playground/**',
                 '**/tests/**',
                 '**/types.ts',
-                '**/stub/**',
             ],
         },
     },
