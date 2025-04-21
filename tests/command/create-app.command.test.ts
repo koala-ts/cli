@@ -1,8 +1,7 @@
 import { describe, expect, test, vi } from 'vitest';
 import { action, description, signature } from '../../src/command/create-app.command';
 import { mkdir } from 'node:fs/promises';
-import { download } from '../../src/util/download';
-import { extractTar } from '../../src/util/extract';
+import { download, extractTar } from '../../src/util';
 
 vi.mock('node:fs/promises', () => ({
     mkdir: vi.fn(),

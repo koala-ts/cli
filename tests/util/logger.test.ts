@@ -1,6 +1,6 @@
 import { describe, expect, test, vi } from 'vitest';
-import { colorFormat, createLogger } from '../../src/util';
 import { gray, green, red, yellow } from 'yoctocolors';
+import { colorFormat, createLogger } from '../../src/util/logger';
 
 describe('Logger', function () {
     describe('Color formatting', function () {

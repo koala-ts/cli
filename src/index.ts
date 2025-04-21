@@ -4,8 +4,8 @@ import { readdirSync } from 'fs';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import * as process from 'node:process';
-import logger from './util/logger';
 import { IProgram } from './types';
+import { logger } from './util';
 
 const program = new Program() as IProgram;
 

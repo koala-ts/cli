@@ -20,11 +20,9 @@ export function createLogger(level: LogLevel, logFn: (...args: unknown[]) => voi
     return (...args: unknown[]) => logFn(colorFormat(level, ...args));
 }
 
-const logger: ILogger = {
+export const logger: ILogger = {
     info: createLogger('info', console.log, process.env.NODE_ENV),
     warn: createLogger('warn', console.warn, process.env.NODE_ENV),
     error: createLogger('error', console.error, process.env.NODE_ENV),
     debug: createLogger('debug', console.debug, process.env.NODE_ENV),
 };
-
-export default logger;

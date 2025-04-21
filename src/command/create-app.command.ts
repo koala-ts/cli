@@ -1,5 +1,4 @@
-import logger from '../util/logger';
-import { download, extractTar } from '../util';
+import { download, extractTar, logger } from '../util';
 import { mkdir } from 'node:fs/promises';
 
 export const signature = 'create <name>';
