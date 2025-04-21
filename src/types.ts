@@ -1,11 +1,10 @@
-import { Command } from 'commander';
+import type { Command } from 'commander';
 
-export interface IProgram extends Command {
-}
+export interface IProgram extends Command {}
 
 export interface ILogger {
-    info: (...args: any[]) => void;
-    warn: (...args: any[]) => void;
-    error: (...args: any[]) => void;
-    debug: (...args: any[]) => void;
+	info: (...args: unknown[]) => void;
+	warn: (...args: unknown[]) => void;
+	error: (...args: unknown[]) => void;
+	debug: (...args: unknown[]) => void;
 }
