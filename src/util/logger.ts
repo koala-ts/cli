@@ -2,19 +2,19 @@ import { gray, green, red, yellow } from 'yoctocolors';
 import { ILogger } from '../types';
 
 const logger: ILogger = {
-    info: (...args: any[]) => console.log(green(args.join(' '))),
-    warn: (...args: any[]) => console.warn(yellow(args.join(' '))),
-    error: (...args: any[]) => console.error(red(args.join(' '))),
-    debug: (...args: any[]) => console.debug(gray(args.join(' '))),
+    info: (...args: unknown[]) => console.log(green(args.join(' '))),
+    warn: (...args: unknown[]) => console.warn(yellow(args.join(' '))),
+    error: (...args: unknown[]) => console.error(red(args.join(' '))),
+    debug: (...args: unknown[]) => console.debug(gray(args.join(' '))),
 };
 
-const silent = () => undefined;
+export const silentLogger: ILogger = {
+    info: () => undefined,
+    warn: () => undefined,
+    error: () => undefined,
+    debug: () => undefined,
+};
 
-if (process.env.NODE_ENV === 'test') {
-    logger.info = silent;
-    logger.warn = silent;
-    logger.error = silent;
-    logger.debug = silent;
-}
+const exportedLogger = process.env.NODE_ENV === 'test' ? silentLogger : logger;
 
-export default logger;
+export default exportedLogger;
