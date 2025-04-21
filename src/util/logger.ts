@@ -1,20 +1,30 @@
 import { gray, green, red, yellow } from 'yoctocolors';
 import { ILogger } from '../types';
 
+type LogLevel = 'info' | 'warn' | 'error' | 'debug';
+
+export function colorFormat(level: LogLevel, ...args: unknown[]) {
+    const colorMap = {
+        info: green,
+        warn: yellow,
+        error: red,
+        debug: gray,
+    };
+    return colorMap[level](args.join(' '));
+}
+
+export function createLogger(level: LogLevel, logFn: (...args: unknown[]) => void, mode: string = 'default') {
+    if (mode === 'test') {
+        return () => undefined;
+    }
+    return (...args: unknown[]) => logFn(colorFormat(level, ...args));
+}
+
 const logger: ILogger = {
-    info: (...args: unknown[]) => console.log(green(args.join(' '))),
-    warn: (...args: unknown[]) => console.warn(yellow(args.join(' '))),
-    error: (...args: unknown[]) => console.error(red(args.join(' '))),
-    debug: (...args: unknown[]) => console.debug(gray(args.join(' '))),
+    info: createLogger('info', console.log, process.env.NODE_ENV),
+    warn: createLogger('warn', console.warn, process.env.NODE_ENV),
+    error: createLogger('error', console.error, process.env.NODE_ENV),
+    debug: createLogger('debug', console.debug, process.env.NODE_ENV),
 };
 
-export const silentLogger: ILogger = {
-    info: () => undefined,
-    warn: () => undefined,
-    error: () => undefined,
-    debug: () => undefined,
-};
-
-const exportedLogger = process.env.NODE_ENV === 'test' ? silentLogger : logger;
-
-export default exportedLogger;
+export default logger;
