@@ -1,36 +1,38 @@
 #!/usr/bin/env node
-import { Command as Program } from 'commander';
-import { readdirSync } from 'fs';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
+import { readdirSync } from 'node:fs';
+import { dirname } from 'node:path';
 import * as process from 'node:process';
-import logger from './util/logger';
-import { IProgram } from './types';
+import { fileURLToPath } from 'node:url';
+import { Command as Program } from 'commander';
+import type { IProgram } from './types';
+import { logger } from './util';
 
 const program = new Program() as IProgram;
 
 program
-    .name('KoalaTs CLI')
-    .description('KoalaTs CLI is a command line interface for KoalaTs')
-    .version('1.x');
+	.name('KoalaTs CLI')
+	.description('KoalaTs CLI is a command line interface for KoalaTs')
+	.version('1.x');
 
 const rootDir = dirname(fileURLToPath(import.meta.url));
 const commandFiles: string[] = readdirSync(`${rootDir}/command`);
-const commands = commandFiles.filter(file => file.endsWith('.command.js') || file.endsWith('.command.ts'));
+const commands = commandFiles.filter(
+	(file) => file.endsWith('.command.js') || file.endsWith('.command.ts'),
+);
 
 for (const command of commands) {
-    const commandModule = await import(`./command/${command}`);
-    program
-        .command(commandModule.signature)
-        .description(commandModule.description)
-        .action(commandModule.action);
+	const commandModule = await import(`./command/${command}`);
+	program
+		.command(commandModule.signature)
+		.description(commandModule.description)
+		.action(commandModule.action);
 }
 
 try {
-    program.parse(process.argv);
+	program.parse(process.argv);
 } catch (error) {
-    if (error instanceof Error) {
-        logger.error(error.message);
-    }
-    process.exit(1);
+	if (error instanceof Error) {
+		logger.error(error.message);
+	}
+	process.exit(1);
 }
