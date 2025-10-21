@@ -31,7 +31,7 @@ describe('Create App Command', () => {
 			recursive: true,
 		});
 		expect(download).toHaveBeenCalledWith(
-			'https://codeload.github.com/koala-ts/koala-ts/tar.gz/1.x',
+			'https://codeload.github.com/koala-ts/koala-ts/tar.gz/2.x',
 		);
 		expect(extractTar).toHaveBeenCalledWith(downloaded, './test-app');
 	});
