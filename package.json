@@ -1,52 +1,61 @@
 {
-	"name": "@koala-ts/cli",
-	"version": "1.5.1",
-	"main": "dist/index.js",
-	"bin": {
-		"koala-ts": "dist/index.js"
-	},
-	"publishConfig": {
-		"access": "public"
-	},
-	"description": "KoalaTs cli",
-	"homepage": "https://koala-ts.github.io/docs/",
-	"bugs": {
-		"url": "https://github.com/koala-ts/cli/issues"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/koala-ts/cli.git"
-	},
-	"license": "MIT",
-	"author": {
-		"name": "Dhemy",
-		"email": "imdhemy@gmail.com",
-		"url": "https://imdhemy.com"
-	},
-	"keywords": ["koala", "framework", "nodejs", "typescript", "cli"],
-	"type": "module",
-	"files": ["dist", "stub"],
-	"scripts": {
-		"build": "tsc && tsc-alias && chmod +x dist/index.js",
-		"test": "vitest run --coverage",
-		"check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
-		"lint": "biome check",
-		"lint:fix": "biome check --write",
-		"format": "biome format",
-		"format:fix": "biome format --write"
-	},
-	"devDependencies": {
-		"@arethetypeswrong/cli": "^0.18.2",
-		"@biomejs/biome": "1.9.4",
-		"@types/node": "^22.10.2",
-		"@vitest/coverage-v8": "^3.1.1",
-		"tsc-alias": "^1.8.10",
-		"typescript": "^5.7.2",
-		"vitest": "^3.1.1"
-	},
-	"dependencies": {
-		"commander": "^14.0.0",
-		"tar": "^7.4.3",
-		"yoctocolors": "^2.1.1"
-	}
+  "name": "@koala-ts/cli",
+  "version": "1.6.1",
+  "main": "dist/index.js",
+  "bin": {
+    "koala-ts": "dist/index.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "KoalaTs cli",
+  "homepage": "https://koala-ts.github.io/docs/",
+  "bugs": {
+    "url": "https://github.com/koala-ts/cli/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koala-ts/cli.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Dhemy",
+    "email": "imdhemy@gmail.com",
+    "url": "https://imdhemy.com"
+  },
+  "keywords": [
+    "koala",
+    "framework",
+    "nodejs",
+    "typescript",
+    "cli"
+  ],
+  "type": "module",
+  "files": [
+    "dist",
+    "stub"
+  ],
+  "scripts": {
+    "build": "tsc && tsc-alias && chmod +x dist/index.js",
+    "test": "vitest run --coverage",
+    "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
+    "lint": "biome check",
+    "lint:fix": "biome check --write",
+    "format": "biome format",
+    "format:fix": "biome format --write"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.2",
+    "@biomejs/biome": "1.9.4",
+    "@types/node": "^22.10.2",
+    "@vitest/coverage-v8": "^3.1.1",
+    "tsc-alias": "^1.8.10",
+    "typescript": "^5.7.2",
+    "vitest": "^3.1.1"
+  },
+  "dependencies": {
+    "commander": "^14.0.0",
+    "tar": "^7.4.3",
+    "yoctocolors": "^2.1.1"
+  }
 }
